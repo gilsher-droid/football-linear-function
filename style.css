@@ -67,10 +67,22 @@ input {
     margin:0 auto;
 
     display:grid;
-    grid-template-columns:1fr 320px;
+    grid-template-columns:320px 1fr;
+
+    direction:ltr;
 
     align-items:center;
     gap:40px;
+}
+
+.header-logo{
+    justify-self:start;
+}
+
+.header-text{
+    direction:rtl;
+    text-align:right;
+    justify-self:end;
 }
 
 .header-text{
@@ -579,11 +591,10 @@ footer {
     text-align:center;
 }
 
-.header-text h1{
-    margin:0;
-    font-size:34px;
-    font-weight:700;
-    line-height:1.2;
+.header-text{
+    direction: rtl;
+    text-align: right;
+    justify-self: end;
 }
 
 .header-text .subtitle{
@@ -596,12 +607,19 @@ footer {
   color: #ffffff !important;
 }
 
-.header-text h1,
-.header-text .subtitle {
-  font-size:clamp(24px,3vw,36px);
-  color: #ffffff !important;
-  margin-top:6px;
-font-size:15px;
+.header-text h1{
+    color:#ffffff;
+    font-size:30px;
+    font-weight:700;
+    margin:0;
+    line-height:1.2;
+}
+
+.header-text .subtitle{
+    color:#ffffff;
+    font-size:15px;
+    margin-top:6px;
+    opacity:.9;
 }
 .identity-card {
   padding: 11px 14px;
