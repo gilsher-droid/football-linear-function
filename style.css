@@ -1,1 +1,534 @@
+:root {
+  --navy: #06283d;
+  --navy-light: #0c4a6e;
+  --blue: #0284c7;
+  --sky: #e0f2fe;
+  --green-dark: #0c7a42;
+  --green-light: #169c55;
+  --gold: #facc15;
+  --yellow-line: #fff7ae;
+  --white: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --panel: #ffffff;
+  --border: #dbe4ec;
+  --success: #15803d;
+  --success-light: #dcfce7;
+}
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(
+      180deg,
+      #eaf4f8 0%,
+      #f8fafc 55%,
+      #eef4f7 100%
+    );
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* כותרת */
+
+.site-header {
+  color: var(--white);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(56, 189, 248, 0.25),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      var(--navy),
+      var(--navy-light)
+    );
+  padding: 28px 18px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
+}
+
+.header-content {
+  width: min(1180px, 96%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #bae6fd;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(27px, 4vw, 44px);
+  line-height: 1.15;
+}
+
+.subtitle {
+  max-width: 760px;
+  margin: 12px auto 0;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+/* מבנה כללי */
+
+.app-layout {
+  width: min(1240px, 96%);
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.simulation-panel,
+.information-panel {
+  min-width: 0;
+}
+
+.simulation-panel,
+.math-card,
+.identity-card,
+.controls-card {
+  background: var(--panel);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 20px;
+  box-shadow:
+    0 14px 35px rgba(15, 23, 42, 0.09),
+    0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.simulation-panel {
+  padding: 18px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.section-heading h2 {
+  margin: 0 0 5px;
+  font-size: 23px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.model-badge {
+  flex: 0 0 auto;
+  padding: 8px 13px;
+  color: #164e63;
+  background: #cffafe;
+  border: 1px solid #67e8f9;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* המגרש */
+
+.pitch-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 18px;
+  background: #0b6d37;
+  border: 4px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.22),
+    0 12px 25px rgba(15, 23, 42, 0.18);
+}
+
+#footballPitch {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  touch-action: none;
+}
+
+.draggable {
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+#shotLine {
+  filter: drop-shadow(0 0 5px rgba(255, 247, 174, 0.7));
+}
+
+#targetGroup {
+  transition: filter 0.2s ease;
+}
+
+#targetGroup:hover {
+  filter:
+    drop-shadow(0 0 8px rgba(250, 204, 21, 0.85));
+}
+
+#ballGroup:hover {
+  filter:
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+/* מקרא */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  margin-top: 14px;
+  color: #334155;
+  font-size: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.legend-ball,
+.legend-target {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.legend-ball {
+  background: var(--white);
+  border: 2px solid #111827;
+}
+
+.legend-target {
+  background: var(--gold);
+  border: 2px solid #713f12;
+}
+
+.legend-line {
+  display: inline-block;
+  width: 30px;
+  height: 5px;
+  border-radius: 4px;
+  background: var(--yellow-line);
+}
+
+.instruction-box {
+  margin-top: 14px;
+  padding: 13px 15px;
+  color: #164e63;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  border-radius: 13px;
+  line-height: 1.55;
+}
+
+/* פאנל המידע */
+
+.information-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.math-card,
+.identity-card,
+.controls-card {
+  padding: 17px;
+}
+
+.math-card h2,
+.identity-card h2,
+.controls-card h2 {
+  margin: 0 0 11px;
+  font-size: 19px;
+}
+
+.primary-card {
+  border-right: 6px solid var(--blue);
+}
+
+.main-equation {
+  direction: ltr;
+  margin: 10px 0;
+  text-align: center;
+  color: var(--navy-light);
+  font-size: clamp(29px, 4vw, 38px);
+  font-weight: 800;
+}
+
+#equationExplanation {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ערכים */
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.value-card {
+  min-width: 0;
+  padding: 13px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.05);
+}
+
+.value-card span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.value-card strong {
+  display: block;
+  direction: ltr;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+/* זהות m = tan(theta) */
+
+.identity-card {
+  background:
+    linear-gradient(
+      145deg,
+      #f8fafc,
+      #eff6ff
+    );
+}
+
+.identity-line {
+  direction: ltr;
+  display: grid;
+  grid-template-columns: 1fr auto 1.5fr;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  padding: 9px 11px;
+  background: var(--white);
+  border: 1px solid #dbeafe;
+  border-radius: 11px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.identity-result {
+  direction: ltr;
+  margin-top: 12px;
+  padding: 12px;
+  color: var(--success);
+  background: var(--success-light);
+  border: 2px solid #86efac;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+/* בקרים */
+
+.controls-card label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 13px 0 7px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.controls-card label strong {
+  min-width: 73px;
+  padding: 5px 8px;
+  color: var(--navy-light);
+  background: var(--sky);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.controls-card input[type="range"] {
+  width: 100%;
+  height: 6px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+.target-heading {
+  margin-top: 21px !important;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* כפתורים */
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 10px;
+}
+
+.button-row button {
+  border: 0;
+  border-radius: 13px;
+  padding: 13px 12px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.button-row button:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+}
+
+.button-row button:active {
+  transform: translateY(1px);
+}
+
+.primary-button {
+  color: #172554;
+  background:
+    linear-gradient(
+      135deg,
+      #fde047,
+      #f59e0b
+    );
+  box-shadow: 0 7px 15px rgba(245, 158, 11, 0.28);
+}
+
+.secondary-button {
+  color: #172554;
+  background: #dbeafe;
+  box-shadow: 0 7px 15px rgba(2, 132, 199, 0.12);
+}
+
+/* תחתית */
+
+footer {
+  padding: 18px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* התאמה למסכים קטנים */
+
+@media (max-width: 920px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .information-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .primary-card,
+  .controls-card,
+  .button-row {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .site-header {
+    padding: 22px 13px;
+  }
+
+  .app-layout {
+    width: min(100%, 96%);
+    margin-top: 14px;
+  }
+
+  .simulation-panel {
+    padding: 11px;
+    border-radius: 15px;
+  }
+
+  .pitch-wrapper {
+    border-radius: 13px;
+    border-width: 2px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .model-badge {
+    padding: 6px 9px;
+    font-size: 12px;
+  }
+
+  .information-panel {
+    display: flex;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .button-row {
+    grid-template-columns: 1fr;
+  }
+
+  .identity-line {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 430px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
