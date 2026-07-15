@@ -62,10 +62,17 @@ input {
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
 }
 
-.header-content {
-  width: min(1180px, 96%);
-  margin: 0 auto;
-  text-align: center;
+.header-content{
+    width:min(1180px,96%);
+    margin:0 auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
 }
 
 .eyebrow {
@@ -537,4 +544,35 @@ footer {
   width: min(360px, 80%);
   height: auto;
   margin: 0 auto 18px;
+}
+.header-logo img{
+
+    width:320px;
+
+    height:auto;
+
+    display:block;
+}
+
+.header-text{
+
+    flex:1;
+
+    text-align:right;
+}
+
+.header-text h1{
+
+    margin:0;
+
+    color:white;
+}
+
+.header-text .subtitle{
+
+    margin-top:12px;
+
+    color:white;
+
+    opacity:.9;
 }
