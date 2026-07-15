@@ -532,3 +532,9 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+.brand-logo {
+  display: block;
+  width: min(360px, 80%);
+  height: auto;
+  margin: 0 auto 18px;
+}
