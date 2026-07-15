@@ -617,3 +617,30 @@ footer {
 .header-text .subtitle {
   color: #ffffff !important;
 }
+.identity-card {
+  padding: 11px 14px;
+}
+
+.identity-card h2 {
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
+.identity-line {
+  margin: 5px 0;
+  padding: 6px 9px;
+  font-size: 16px;
+}
+
+.identity-result {
+  margin-top: 7px;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.simulation-panel .button-row {
+  margin-top: 12px;
+  max-width: 420px;
+  margin-right: auto;
+  margin-left: auto;
+}
