@@ -65,9 +65,9 @@ input {
 .header-content{
     width:min(1200px,96%);
     margin:0 auto;
-    display:flex;
-    flex-direction:row-reverse;
-    justify-content:space-between;
+
+    display:grid;
+    grid-template-columns:320px 1fr;
     align-items:center;
     gap:40px;
 }
@@ -566,42 +566,20 @@ footer {
 }
 
 .header-text{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:flex-end;
-
-    text-align:right;
+    text-align:center;
 }
 
 .header-text h1{
-
     margin:0;
-
-    color:#ffffff;
-
-    font-size:clamp(30px,4vw,46px);
-
-    line-height:1.15;
+    font-size:34px;
+    font-weight:700;
+    line-height:1.2;
 }
 
 .header-text .subtitle{
-
-    margin-top:14px;
-
-    color:rgba(255,255,255,.92);
-
-    font-size:18px;
-
-    line-height:1.5;
-
-    max-width:700px;
+    margin-top:8px;
+    font-size:17px;
+    opacity:.9;
 }
 .site-header {
   background: linear-gradient(135deg, #06283d, #0c4a6e) !important;
