@@ -134,7 +134,6 @@ function updateScene() {
   const targetY = sideToSvgY(targetSide);
 
   const deltaX = distance;
-  const deltaY = targetSide - ballSide;
 
 let deltaY = targetSide - ballSide;
 
