@@ -136,10 +136,25 @@ function updateScene() {
   const deltaX = distance;
   const deltaY = targetSide - ballSide;
 
-  const slope = deltaY / deltaX;
-  const angleRadians = Math.atan(slope);
-  const angleDegrees = angleRadians * 180 / Math.PI;
-  const tangent = Math.tan(angleRadians);
+let deltaY = targetSide - ballSide;
+
+if (Math.abs(deltaY) < 0.05) {
+    deltaY = 0;
+}
+
+const slope = deltaY / deltaX;
+
+const angleRadians = Math.atan(slope);
+
+const angleDegrees =
+    deltaY === 0
+        ? 0
+        : angleRadians * 180 / Math.PI;
+
+const tangent =
+    deltaY === 0
+        ? 0
+        : Math.tan(angleRadians);
 
   const pathLength = Math.sqrt(
     deltaX ** 2 + deltaY ** 2
