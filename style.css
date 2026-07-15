@@ -58,23 +58,18 @@ input {
       var(--navy),
       var(--navy-light)
     );
-  padding: 28px 18px;
+  padding:12px 18px;
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
 }
 
 .header-content{
-
     width:min(1200px,96%);
-
     margin:0 auto;
-
     display:flex;
-
+    flex-direction:row-reverse;
     justify-content:space-between;
-
     align-items:center;
-
-    gap:60px;
+    gap:40px;
 }
 
 .eyebrow {
@@ -615,7 +610,10 @@ footer {
 
 .header-text h1,
 .header-text .subtitle {
+  font-size:clamp(24px,3vw,36px);
   color: #ffffff !important;
+  margin-top:6px;
+font-size:15px;
 }
 .identity-card {
   padding: 11px 14px;
