@@ -1,1 +1,622 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>פונקציה לינארית בכדורגל | Fundamatics</title>
+
+  <meta
+    name="description"
+    content="יישומון אינטראקטיבי להמחשת פונקציה לינארית, שיפוע, זווית וטנגנס באמצעות בעיטה שטוחה לשער."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <p class="eyebrow">Fundamatics Football Mathematics</p>
+
+      <h1>פונקציה לינארית בתוך משחק הכדורגל</h1>
+
+      <p class="subtitle">
+        הזיזו את הכדור ואת נקודת היעד וגלו כיצד השיפוע,
+        הזווית ומשוואת הישר משתנים.
+      </p>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <section class="simulation-panel">
+      <div class="section-heading">
+        <div>
+          <h2>בעיטה שטוחה לשער</h2>
+
+          <p>
+            מסלול הכדור מיוצג בקירוב באמצעות קו ישר.
+          </p>
+        </div>
+
+        <div class="model-badge">
+          מודל לינארי
+        </div>
+      </div>
+
+      <div class="pitch-wrapper">
+        <svg
+          id="footballPitch"
+          viewBox="0 0 1000 620"
+          role="img"
+          aria-label="מגרש כדורגל אינטראקטיבי עם שחקן, כדור, שער ומסלול בעיטה"
+        >
+          <defs>
+            <linearGradient
+              id="pitchGradient"
+              x1="0"
+              y1="0"
+              x2="1"
+              y2="0"
+            >
+              <stop offset="0%" stop-color="#0c7a42" />
+              <stop offset="100%" stop-color="#169c55" />
+            </linearGradient>
+
+            <pattern
+              id="grassPattern"
+              width="130"
+              height="620"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect
+                width="65"
+                height="620"
+                fill="rgba(255,255,255,0.035)"
+              />
+
+              <rect
+                x="65"
+                width="65"
+                height="620"
+                fill="rgba(0,0,0,0.035)"
+              />
+            </pattern>
+
+            <pattern
+              id="goalNet"
+              width="14"
+              height="14"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 0 0 L 14 14 M 14 0 L 0 14"
+                stroke="rgba(255,255,255,0.55)"
+                stroke-width="1"
+              />
+            </pattern>
+
+            <filter id="softShadow">
+              <feDropShadow
+                dx="0"
+                dy="4"
+                stdDeviation="4"
+                flood-opacity="0.35"
+              />
+            </filter>
+
+            <marker
+              id="arrowHead"
+              markerWidth="10"
+              markerHeight="10"
+              refX="8"
+              refY="5"
+              orient="auto"
+            >
+              <path
+                d="M 0 0 L 10 5 L 0 10 Z"
+                fill="#dbeafe"
+              />
+            </marker>
+          </defs>
+
+          <!-- משטח הדשא -->
+          <rect
+            width="1000"
+            height="620"
+            fill="url(#pitchGradient)"
+          />
+
+          <rect
+            width="1000"
+            height="620"
+            fill="url(#grassPattern)"
+          />
+
+          <!-- גבולות אזור ההתקפה -->
+          <rect
+            x="30"
+            y="30"
+            width="890"
+            height="560"
+            rx="6"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <!-- רחבת העונשין -->
+          <rect
+            x="660"
+            y="135"
+            width="260"
+            height="350"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <!-- רחבת החמש -->
+          <rect
+            x="805"
+            y="220"
+            width="115"
+            height="180"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <!-- נקודת העונשין -->
+          <circle
+            cx="705"
+            cy="310"
+            r="6"
+            fill="#ffffff"
+          />
+
+          <!-- קשת הרחבה -->
+          <path
+            d="M 660 218 A 100 100 0 0 0 660 402"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <!-- שער תלת-ממדי -->
+          <g id="goalGroup">
+            <polygon
+              points="920,235 975,215 975,405 920,385"
+              fill="url(#goalNet)"
+              opacity="0.85"
+            />
+
+            <line
+              x1="920"
+              y1="235"
+              x2="975"
+              y2="215"
+              stroke="#ffffff"
+              stroke-width="6"
+            />
+
+            <line
+              x1="920"
+              y1="385"
+              x2="975"
+              y2="405"
+              stroke="#ffffff"
+              stroke-width="6"
+            />
+
+            <line
+              x1="975"
+              y1="215"
+              x2="975"
+              y2="405"
+              stroke="#ffffff"
+              stroke-width="6"
+            />
+
+            <line
+              x1="920"
+              y1="235"
+              x2="920"
+              y2="385"
+              stroke="#ffffff"
+              stroke-width="7"
+            />
+
+            <text
+              x="830"
+              y="205"
+              fill="#ffffff"
+              font-size="21"
+              font-weight="700"
+            >
+              השער
+            </text>
+          </g>
+
+          <!-- צירי הקואורדינטות -->
+          <g id="axesGroup">
+            <line
+              id="xAxis"
+              stroke="#dbeafe"
+              stroke-width="2.5"
+              stroke-dasharray="9 9"
+              marker-end="url(#arrowHead)"
+            />
+
+            <line
+              id="yAxis"
+              stroke="#dbeafe"
+              stroke-width="2.5"
+              stroke-dasharray="9 9"
+              marker-end="url(#arrowHead)"
+            />
+
+            <text
+              id="xAxisLabel"
+              fill="#ffffff"
+              font-size="21"
+              font-weight="700"
+            >
+              x
+            </text>
+
+            <text
+              id="yAxisLabel"
+              fill="#ffffff"
+              font-size="21"
+              font-weight="700"
+            >
+              y
+            </text>
+
+            <text
+              id="originLabel"
+              fill="#ffffff"
+              font-size="16"
+            >
+              (0,0)
+            </text>
+          </g>
+
+          <!-- המשולש שממחיש את השיפוע -->
+          <g id="slopeTriangle">
+            <line
+              id="horizontalLeg"
+              stroke="#bfdbfe"
+              stroke-width="4"
+              stroke-dasharray="8 7"
+            />
+
+            <line
+              id="verticalLeg"
+              stroke="#bfdbfe"
+              stroke-width="4"
+              stroke-dasharray="8 7"
+            />
+
+            <text
+              id="deltaXLabel"
+              fill="#ffffff"
+              font-size="17"
+              font-weight="700"
+            >
+              Δx
+            </text>
+
+            <text
+              id="deltaYLabel"
+              fill="#ffffff"
+              font-size="17"
+              font-weight="700"
+            >
+              Δy
+            </text>
+          </g>
+
+          <!-- קשת הזווית -->
+          <path
+            id="angleArc"
+            fill="none"
+            stroke="#facc15"
+            stroke-width="5"
+          />
+
+          <text
+            id="angleLabel"
+            fill="#fef08a"
+            font-size="20"
+            font-weight="700"
+          >
+            θ
+          </text>
+
+          <!-- קו מסלול הבעיטה -->
+          <line
+            id="shotLine"
+            stroke="#fff7ae"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
+
+          <!-- נקודת היעד -->
+          <g
+            id="targetGroup"
+            class="draggable"
+            filter="url(#softShadow)"
+          >
+            <circle
+              r="23"
+              fill="rgba(250,204,21,0.20)"
+              stroke="#fde68a"
+              stroke-width="2"
+            />
+
+            <circle
+              r="13"
+              fill="#facc15"
+              stroke="#713f12"
+              stroke-width="3"
+            />
+
+            <circle
+              r="4"
+              fill="#713f12"
+            />
+          </g>
+
+          <!-- דמות השחקן -->
+          <image
+            id="playerImage"
+            href="assets/messi.png"
+            width="105"
+            height="155"
+            preserveAspectRatio="xMidYMid meet"
+            pointer-events="none"
+          />
+
+          <!-- כדור נייח -->
+          <g
+            id="ballGroup"
+            class="draggable"
+            filter="url(#softShadow)"
+          >
+            <circle
+              r="20"
+              fill="#ffffff"
+              stroke="#111827"
+              stroke-width="3"
+            />
+
+            <polygon
+              points="0,-8 8,-3 5,7 -5,7 -8,-3"
+              fill="#111827"
+            />
+
+            <path
+              d="
+                M 0 -8 L 0 -18
+                M 8 -3 L 17 -8
+                M 5 7 L 12 16
+                M -5 7 L -12 16
+                M -8 -3 L -17 -8
+              "
+              fill="none"
+              stroke="#111827"
+              stroke-width="2"
+            />
+
+            <path
+              d="M -14 -13 Q 0 -22 14 -13"
+              fill="none"
+              stroke="#cbd5e1"
+              stroke-width="1.5"
+            />
+
+            <path
+              d="M -16 9 Q 0 21 16 9"
+              fill="none"
+              stroke="#cbd5e1"
+              stroke-width="1.5"
+            />
+          </g>
+
+          <!-- כדור נע -->
+          <g
+            id="movingBall"
+            visibility="hidden"
+            filter="url(#softShadow)"
+          >
+            <circle
+              r="17"
+              fill="#ffffff"
+              stroke="#111827"
+              stroke-width="3"
+            />
+
+            <polygon
+              points="0,-7 7,-2 4,6 -4,6 -7,-2"
+              fill="#111827"
+            />
+
+            <path
+              d="
+                M 0 -7 L 0 -15
+                M 7 -2 L 14 -7
+                M 4 6 L 10 14
+                M -4 6 L -10 14
+                M -7 -2 L -14 -7
+              "
+              fill="none"
+              stroke="#111827"
+              stroke-width="2"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-ball"></span>
+          <span>מיקום הכדור</span>
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-target"></span>
+          <span>נקודת היעד</span>
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-line"></span>
+          <span>מסלול הבעיטה</span>
+        </div>
+      </div>
+
+      <div class="instruction-box">
+        גררו את הכדור ואת נקודת היעד. בכל שינוי יתעדכנו
+        המשוואה, השיפוע, הזווית והטנגנס.
+      </div>
+    </section>
+
+    <aside class="information-panel">
+      <section class="math-card primary-card">
+        <h2>משוואת מסלול הבעיטה</h2>
+
+        <div
+          id="equationDisplay"
+          class="main-equation"
+        >
+          y = 0
+        </div>
+
+        <p id="equationExplanation">
+          הכדור נע בקו ישר אל מרכז השער.
+        </p>
+      </section>
+
+      <section class="values-grid">
+        <article class="value-card">
+          <span>שיפוע</span>
+          <strong id="slopeValue">0</strong>
+        </article>
+
+        <article class="value-card">
+          <span>זווית θ</span>
+          <strong id="angleValue">0°</strong>
+        </article>
+
+        <article class="value-card">
+          <span>tan(θ)</span>
+          <strong id="tangentValue">0</strong>
+        </article>
+
+        <article class="value-card">
+          <span>אורך המסלול</span>
+          <strong id="pathLengthValue">18 מ׳</strong>
+        </article>
+      </section>
+
+      <section class="identity-card">
+        <h2>הקשר בין שיפוע לטנגנס</h2>
+
+        <div class="identity-line">
+          <span>m</span>
+          <span>=</span>
+          <span>Δy / Δx</span>
+        </div>
+
+        <div class="identity-line">
+          <span>tan(θ)</span>
+          <span>=</span>
+          <span>Δy / Δx</span>
+        </div>
+
+        <div
+          id="identityResult"
+          class="identity-result"
+        >
+          m = tan(θ)
+        </div>
+      </section>
+
+      <section class="controls-card">
+        <h2>מיקום הכדור</h2>
+
+        <label for="distanceSlider">
+          <span>מרחק מהשער</span>
+          <strong id="distanceValue">18 מ׳</strong>
+        </label>
+
+        <input
+          id="distanceSlider"
+          type="range"
+          min="8"
+          max="22"
+          step="1"
+          value="18"
+        />
+
+        <label for="ballSideSlider">
+          <span>מיקום לרוחב</span>
+          <strong id="ballSideValue">0 מ׳</strong>
+        </label>
+
+        <input
+          id="ballSideSlider"
+          type="range"
+          min="-10"
+          max="10"
+          step="0.5"
+          value="0"
+        />
+
+        <h2 class="target-heading">
+          נקודת היעד בשער
+        </h2>
+
+        <label for="targetSlider">
+          <span>מיקום היעד</span>
+          <strong id="targetValue">0 מ׳</strong>
+        </label>
+
+        <input
+          id="targetSlider"
+          type="range"
+          min="-3.66"
+          max="3.66"
+          step="0.1"
+          value="0"
+        />
+      </section>
+
+      <section class="button-row">
+        <button
+          id="kickButton"
+          type="button"
+          class="primary-button"
+        >
+          ⚽ בעט בכדור
+        </button>
+
+        <button
+          id="resetButton"
+          type="button"
+          class="secondary-button"
+        >
+          איפוס
+        </button>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    Fundamatics — Maths for life
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
