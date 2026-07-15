@@ -86,10 +86,22 @@ input {
   text-transform: uppercase;
 }
 
-.site-header h1 {
-  margin: 0;
-  font-size: clamp(27px, 4vw, 44px);
-  line-height: 1.15;
+.site-header {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(56, 189, 248, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #06283d,
+            #0c4a6e
+        );
+
+    color: #ffffff;
+    padding: 28px 18px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
 }
 
 .subtitle {
