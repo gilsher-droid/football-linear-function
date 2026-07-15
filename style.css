@@ -67,9 +67,19 @@ input {
     margin:0 auto;
 
     display:grid;
-    grid-template-columns:320px 1fr;
+    grid-template-columns:1fr 320px;
+
     align-items:center;
     gap:40px;
+}
+
+.header-text{
+    text-align:right;
+    justify-self:end;
+}
+
+.header-logo{
+    justify-self:start;
 }
 
 .eyebrow {
