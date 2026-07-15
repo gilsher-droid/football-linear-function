@@ -43,14 +43,16 @@ input {
   font: inherit;
 }
 
-/* כותרת */
+/* =========================
+   כותרת עליונה
+   ========================= */
 
 .site-header {
   color: var(--white);
   background:
     radial-gradient(
       circle at top right,
-      rgba(56, 189, 248, 0.25),
+      rgba(56, 189, 248, 0.22),
       transparent 35%
     ),
     linear-gradient(
@@ -58,82 +60,62 @@ input {
       var(--navy),
       var(--navy-light)
     );
-  padding:12px 18px;
+  padding: 12px 18px;
   box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
 }
 
-.header-content{
-    width:min(1200px,96%);
-    margin:0 auto;
+.header-content {
+  width: min(1200px, 96%);
+  margin: 0 auto;
 
-    display:grid;
-    grid-template-columns:320px 1fr;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  align-items: center;
+  gap: 40px;
 
-    direction:ltr;
-
-    align-items:center;
-    gap:40px;
+  direction: ltr;
 }
 
-.header-logo{
-    justify-self:start;
+.header-logo {
+  justify-self: start;
 }
 
-.header-text{
-    direction:rtl;
-    text-align:right;
-    justify-self:end;
+.header-logo img {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  height: auto;
 }
 
-.header-text{
-    text-align:right;
-    justify-self:end;
+.header-text {
+  direction: rtl;
+  text-align: right;
+  justify-self: end;
 }
 
-.header-logo{
-    justify-self:start;
-}
-
-.eyebrow {
-  margin: 0 0 8px;
-  color: #bae6fd;
-  font-size: 14px;
+.header-text h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(24px, 2.4vw, 32px);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-.site-header {
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(56, 189, 248, 0.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #06283d,
-            #0c4a6e
-        );
-
-    color: #ffffff;
-    padding: 28px 18px;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
+.header-text .subtitle {
+  max-width: 700px;
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  line-height: 1.45;
 }
 
-.subtitle {
-  max-width: 760px;
-  margin: 12px auto 0;
-  font-size: clamp(16px, 2vw, 19px);
-  line-height: 1.55;
-  opacity: 0.92;
-}
-
-/* מבנה כללי */
+/* =========================
+   מבנה כללי
+   ========================= */
 
 .app-layout {
   width: min(1240px, 96%);
-  margin: 24px auto;
+  margin: 22px auto;
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
   gap: 22px;
@@ -191,7 +173,9 @@ input {
   font-weight: 700;
 }
 
-/* המגרש */
+/* =========================
+   המגרש
+   ========================= */
 
 .pitch-wrapper {
   position: relative;
@@ -223,7 +207,10 @@ input {
 }
 
 #shotLine {
-  filter: drop-shadow(0 0 5px rgba(255, 247, 174, 0.7));
+  filter:
+    drop-shadow(
+      0 0 5px rgba(255, 247, 174, 0.7)
+    );
 }
 
 #targetGroup {
@@ -232,15 +219,21 @@ input {
 
 #targetGroup:hover {
   filter:
-    drop-shadow(0 0 8px rgba(250, 204, 21, 0.85));
+    drop-shadow(
+      0 0 8px rgba(250, 204, 21, 0.85)
+    );
 }
 
 #ballGroup:hover {
   filter:
-    drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    drop-shadow(
+      0 0 8px rgba(255, 255, 255, 0.8)
+    );
 }
 
-/* מקרא */
+/* =========================
+   מקרא
+   ========================= */
 
 .legend {
   display: flex;
@@ -293,7 +286,9 @@ input {
   line-height: 1.55;
 }
 
-/* פאנל המידע */
+/* =========================
+   פאנל המידע
+   ========================= */
 
 .information-panel {
   display: flex;
@@ -334,7 +329,9 @@ input {
   text-align: center;
 }
 
-/* ערכים */
+/* =========================
+   ערכים
+   ========================= */
 
 .values-grid {
   display: grid;
@@ -348,7 +345,8 @@ input {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 15px;
-  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.05);
+  box-shadow:
+    0 5px 14px rgba(15, 23, 42, 0.05);
 }
 
 .value-card span {
@@ -365,9 +363,12 @@ input {
   font-size: 22px;
 }
 
-/* זהות m = tan(theta) */
+/* =========================
+   הקשר בין שיפוע לטנגנס
+   ========================= */
 
 .identity-card {
+  padding: 11px 14px;
   background:
     linear-gradient(
       145deg,
@@ -376,36 +377,43 @@ input {
     );
 }
 
+.identity-card h2 {
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
 .identity-line {
   direction: ltr;
   display: grid;
   grid-template-columns: 1fr auto 1.5fr;
   align-items: center;
   gap: 8px;
-  margin: 8px 0;
-  padding: 9px 11px;
+  margin: 5px 0;
+  padding: 6px 9px;
   background: var(--white);
   border: 1px solid #dbeafe;
   border-radius: 11px;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
 }
 
 .identity-result {
   direction: ltr;
-  margin-top: 12px;
-  padding: 12px;
+  margin-top: 7px;
+  padding: 8px;
   color: var(--success);
   background: var(--success-light);
   border: 2px solid #86efac;
   border-radius: 12px;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 900;
 }
 
-/* בקרים */
+/* =========================
+   בקרים
+   ========================= */
 
 .controls-card label {
   display: flex;
@@ -439,12 +447,19 @@ input {
   border-top: 1px solid var(--border);
 }
 
-/* כפתורים */
+/* =========================
+   כפתורים
+   ========================= */
 
 .button-row {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 10px;
+}
+
+.simulation-panel .button-row {
+  max-width: 420px;
+  margin: 12px auto 0;
 }
 
 .button-row button {
@@ -477,16 +492,20 @@ input {
       #fde047,
       #f59e0b
     );
-  box-shadow: 0 7px 15px rgba(245, 158, 11, 0.28);
+  box-shadow:
+    0 7px 15px rgba(245, 158, 11, 0.28);
 }
 
 .secondary-button {
   color: #172554;
   background: #dbeafe;
-  box-shadow: 0 7px 15px rgba(2, 132, 199, 0.12);
+  box-shadow:
+    0 7px 15px rgba(2, 132, 199, 0.12);
 }
 
-/* תחתית */
+/* =========================
+   תחתית
+   ========================= */
 
 footer {
   padding: 18px;
@@ -495,9 +514,20 @@ footer {
   font-size: 14px;
 }
 
-/* התאמה למסכים קטנים */
+/* =========================
+   התאמה לטאבלט
+   ========================= */
 
 @media (max-width: 920px) {
+  .header-content {
+    grid-template-columns: 250px 1fr;
+    gap: 24px;
+  }
+
+  .header-logo img {
+    width: 240px;
+  }
+
   .app-layout {
     grid-template-columns: 1fr;
   }
@@ -514,9 +544,44 @@ footer {
   }
 }
 
+/* =========================
+   התאמה לנייד
+   ========================= */
+
 @media (max-width: 650px) {
   .site-header {
-    padding: 22px 13px;
+    padding: 14px 13px;
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .header-logo {
+    order: 1;
+    justify-self: center;
+  }
+
+  .header-logo img {
+    width: 230px;
+  }
+
+  .header-text {
+    order: 2;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .header-text h1 {
+    font-size: 24px;
+  }
+
+  .header-text .subtitle {
+    margin-top: 5px;
+    font-size: 14px;
   }
 
   .app-layout {
@@ -569,82 +634,4 @@ footer {
     display: grid;
     grid-template-columns: 1fr;
   }
-}
-.brand-logo {
-  display: block;
-  width: min(360px, 80%);
-  height: auto;
-  margin: 0 auto 18px;
-}
-.header-logo img{
-
-    width:320px;
-
-    height:auto;
-
-    display:block;
-
-    flex-shrink:0;
-}
-
-.header-text{
-    text-align:center;
-}
-
-.header-text{
-    direction: rtl;
-    text-align: right;
-    justify-self: end;
-}
-
-.header-text .subtitle{
-    margin-top:8px;
-    font-size:17px;
-    opacity:.9;
-}
-.site-header {
-  background: linear-gradient(135deg, #06283d, #0c4a6e) !important;
-  color: #ffffff !important;
-}
-
-.header-text h1{
-    color:#ffffff;
-    font-size:30px;
-    font-weight:700;
-    margin:0;
-    line-height:1.2;
-}
-
-.header-text .subtitle{
-    color:#ffffff;
-    font-size:15px;
-    margin-top:6px;
-    opacity:.9;
-}
-.identity-card {
-  padding: 11px 14px;
-}
-
-.identity-card h2 {
-  margin-bottom: 6px;
-  font-size: 17px;
-}
-
-.identity-line {
-  margin: 5px 0;
-  padding: 6px 9px;
-  font-size: 16px;
-}
-
-.identity-result {
-  margin-top: 7px;
-  padding: 8px;
-  font-size: 20px;
-}
-
-.simulation-panel .button-row {
-  margin-top: 12px;
-  max-width: 420px;
-  margin-right: auto;
-  margin-left: auto;
 }
