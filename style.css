@@ -3,8 +3,6 @@
   --navy-light: #0c4a6e;
   --blue: #0284c7;
   --sky: #e0f2fe;
-  --green-dark: #0c7a42;
-  --green-light: #169c55;
   --gold: #facc15;
   --yellow-line: #fff7ae;
   --white: #ffffff;
@@ -14,6 +12,8 @@
   --border: #dbe4ec;
   --success: #15803d;
   --success-light: #dcfce7;
+  --warning: #92400e;
+  --warning-light: #fef3c7;
 }
 
 * {
@@ -43,9 +43,7 @@ input {
   font: inherit;
 }
 
-/* =========================
-   כותרת עליונה
-   ========================= */
+/* כותרת */
 
 .site-header {
   color: var(--white);
@@ -67,12 +65,10 @@ input {
 .header-content {
   width: min(1200px, 96%);
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 320px 1fr;
   align-items: center;
   gap: 40px;
-
   direction: ltr;
 }
 
@@ -109,16 +105,14 @@ input {
   line-height: 1.45;
 }
 
-/* =========================
-   מבנה כללי
-   ========================= */
+/* מבנה */
 
 .app-layout {
   width: min(1240px, 96%);
-  margin: 22px auto;
+  margin: 20px auto;
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
-  gap: 22px;
+  gap: 20px;
   align-items: start;
 }
 
@@ -140,7 +134,7 @@ input {
 }
 
 .simulation-panel {
-  padding: 18px;
+  padding: 16px;
 }
 
 .section-heading {
@@ -148,34 +142,32 @@ input {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .section-heading h2 {
-  margin: 0 0 5px;
-  font-size: 23px;
+  margin: 0 0 4px;
+  font-size: 22px;
 }
 
 .section-heading p {
   margin: 0;
   color: var(--muted);
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .model-badge {
   flex: 0 0 auto;
-  padding: 8px 13px;
+  padding: 7px 12px;
   color: #164e63;
   background: #cffafe;
   border: 1px solid #67e8f9;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
-/* =========================
-   המגרש
-   ========================= */
+/* מגרש */
 
 .pitch-wrapper {
   position: relative;
@@ -189,7 +181,6 @@ input {
     inset 0 0 30px rgba(0, 0, 0, 0.22),
     0 12px 25px rgba(15, 23, 42, 0.18);
 }
-
 
 #footballPitch {
   display: block;
@@ -214,33 +205,13 @@ input {
     );
 }
 
-#targetGroup {
-  transition: filter 0.2s ease;
-}
-
-#targetGroup:hover {
-  filter:
-    drop-shadow(
-      0 0 8px rgba(250, 204, 21, 0.85)
-    );
-}
-
-#ballGroup:hover {
-  filter:
-    drop-shadow(
-      0 0 8px rgba(255, 255, 255, 0.8)
-    );
-}
-
-/* =========================
-   מקרא
-   ========================= */
+/* מקרא */
 
 .legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 22px;
-  margin-top: 14px;
+  gap: 12px 20px;
+  margin-top: 12px;
   color: #334155;
   font-size: 14px;
 }
@@ -278,36 +249,33 @@ input {
 }
 
 .instruction-box {
-  margin-top: 14px;
-  padding: 13px 15px;
+  margin-top: 12px;
+  padding: 12px 14px;
   color: #164e63;
   background: #ecfeff;
   border: 1px solid #a5f3fc;
   border-radius: 13px;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-/* =========================
-   פאנל המידע
-   ========================= */
+/* פאנל מידע */
 
 .information-panel {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .math-card,
-.identity-card,
 .controls-card {
-  padding: 17px;
+  padding: 15px;
 }
 
 .math-card h2,
 .identity-card h2,
 .controls-card h2 {
-  margin: 0 0 11px;
-  font-size: 19px;
+  margin: 0 0 9px;
+  font-size: 18px;
 }
 
 .primary-card {
@@ -316,43 +284,39 @@ input {
 
 .main-equation {
   direction: ltr;
-  margin: 10px 0;
+  margin: 8px 0;
   text-align: center;
   color: var(--navy-light);
-  font-size: clamp(29px, 4vw, 38px);
+  font-size: clamp(28px, 4vw, 36px);
   font-weight: 800;
 }
 
 #equationExplanation {
   margin: 0;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.45;
   text-align: center;
 }
-
-/* =========================
-   ערכים
-   ========================= */
 
 .values-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 9px;
 }
 
 .value-card {
   min-width: 0;
-  padding: 13px;
+  padding: 11px;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 15px;
+  border-radius: 14px;
   box-shadow:
     0 5px 14px rgba(15, 23, 42, 0.05);
 }
 
 .value-card span {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   color: var(--muted);
   font-size: 13px;
 }
@@ -361,15 +325,13 @@ input {
   display: block;
   direction: ltr;
   color: var(--ink);
-  font-size: 22px;
+  font-size: 19px;
 }
 
-/* =========================
-   הקשר בין שיפוע לטנגנס
-   ========================= */
+/* שיפוע וטנגנס */
 
 .identity-card {
-  padding: 11px 14px;
+  padding: 10px 13px;
   background:
     linear-gradient(
       145deg,
@@ -379,8 +341,8 @@ input {
 }
 
 .identity-card h2 {
-  margin-bottom: 6px;
-  font-size: 17px;
+  margin-bottom: 5px;
+  font-size: 16px;
 }
 
 .identity-line {
@@ -389,39 +351,43 @@ input {
   grid-template-columns: 1fr auto 1.5fr;
   align-items: center;
   gap: 8px;
-  margin: 5px 0;
-  padding: 6px 9px;
+  margin: 4px 0;
+  padding: 5px 8px;
   background: var(--white);
   border: 1px solid #dbeafe;
-  border-radius: 11px;
+  border-radius: 10px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .identity-result {
   direction: ltr;
-  margin-top: 7px;
-  padding: 8px;
+  margin-top: 6px;
+  padding: 7px;
   color: var(--success);
   background: var(--success-light);
   border: 2px solid #86efac;
-  border-radius: 12px;
+  border-radius: 11px;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
 }
 
-/* =========================
-   בקרים
-   ========================= */
+.identity-result.undefined {
+  color: var(--warning);
+  background: var(--warning-light);
+  border-color: #fcd34d;
+}
+
+/* בקרים */
 
 .controls-card label {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  margin: 13px 0 7px;
+  margin: 11px 0 6px;
   color: #1e293b;
   font-weight: 700;
 }
@@ -443,46 +409,28 @@ input {
 }
 
 .target-heading {
-  margin-top: 21px !important;
-  padding-top: 16px;
+  margin-top: 18px !important;
+  padding-top: 14px;
   border-top: 1px solid var(--border);
 }
 
-/* =========================
-   כפתורים
-   ========================= */
+/* כפתורים */
 
 .button-row {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 10px;
-}
-
-.simulation-panel .button-row {
   max-width: 420px;
-  margin: 12px auto 0;
+  margin: 0 auto 10px;
 }
 
 .button-row button {
   border: 0;
   border-radius: 13px;
-  padding: 13px 12px;
+  padding: 12px;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    filter 0.15s ease,
-    box-shadow 0.15s ease;
-}
-
-.button-row button:hover {
-  transform: translateY(-1px);
-  filter: brightness(0.98);
-}
-
-.button-row button:active {
-  transform: translateY(1px);
 }
 
 .primary-button {
@@ -493,31 +441,21 @@ input {
       #fde047,
       #f59e0b
     );
-  box-shadow:
-    0 7px 15px rgba(245, 158, 11, 0.28);
 }
 
 .secondary-button {
   color: #172554;
   background: #dbeafe;
-  box-shadow:
-    0 7px 15px rgba(2, 132, 199, 0.12);
 }
 
-/* =========================
-   תחתית
-   ========================= */
-
 footer {
-  padding: 18px;
+  padding: 16px;
   color: var(--muted);
   text-align: center;
   font-size: 14px;
 }
 
-/* =========================
-   התאמה לטאבלט
-   ========================= */
+/* טאבלט */
 
 @media (max-width: 920px) {
   .header-content {
@@ -539,15 +477,12 @@ footer {
   }
 
   .primary-card,
-  .controls-card,
-  .button-row {
+  .controls-card {
     grid-column: 1 / -1;
   }
 }
 
-/* =========================
-   התאמה לנייד
-   ========================= */
+/* נייד */
 
 @media (max-width: 650px) {
   .site-header {
@@ -561,19 +496,12 @@ footer {
     text-align: center;
   }
 
-  .header-logo {
-    order: 1;
-    justify-self: center;
-  }
-
   .header-logo img {
     width: 230px;
   }
 
   .header-text {
-    order: 2;
     text-align: center;
-    justify-self: center;
   }
 
   .header-text h1 {
@@ -581,7 +509,6 @@ footer {
   }
 
   .header-text .subtitle {
-    margin-top: 5px;
     font-size: 14px;
   }
 
@@ -592,21 +519,6 @@ footer {
 
   .simulation-panel {
     padding: 11px;
-    border-radius: 15px;
-  }
-
-  .pitch-wrapper {
-    border-radius: 13px;
-    border-width: 2px;
-  }
-
-  .section-heading {
-    align-items: flex-start;
-  }
-
-  .model-badge {
-    padding: 6px 9px;
-    font-size: 12px;
   }
 
   .information-panel {
@@ -619,10 +531,6 @@ footer {
 
   .button-row {
     grid-template-columns: 1fr;
-  }
-
-  .identity-line {
-    font-size: 16px;
   }
 }
 
